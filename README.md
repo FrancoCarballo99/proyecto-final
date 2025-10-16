@@ -6,7 +6,7 @@ Proyecto final "Plataforma de series y películas"
 - Pantalla principal:
 + Películas.
 + Series.
-+ Banner que cada 10 segundos muestre recomendaciones del día.
++ Banner que cada 5 segundos muestre recomendaciones del día.
 + Categorías.
 + Top 10.
 + "Mi lista".
@@ -14,3 +14,13 @@ Proyecto final "Plataforma de series y películas"
 + Usuario específico para niños/as.
 + Barra de búsqueda.
 + Base de datos.
+
+- Mi Lista:
++ Lugar donde se almacena el contenido seleccionado por el usuario.
+
+- Perfiles:
++ Lugar donde se encuentran los perfiles de cada usuario.
++ Posee un botón para agregar un usuario.
+
+- Pantalla:
++ Registro / Inicio de sesión.
