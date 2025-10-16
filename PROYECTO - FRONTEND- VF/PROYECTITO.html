@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQUIDFLIX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="CALAMAR.png" type="image/png">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="CALAMAR.png" alt="Logo de la plataforma" class="logo-img">
+        </div>
+        <div class="hamburguesa" id="hamburguesa">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+            <div class="nav-links">
+                <a href="#">Inicio</a>
+                <a href="#">Películas</a>
+                <a href="#">Series</a>
+                <a href="#">Mi Lista</a>
+                <img src="PERSONITA.png" alt="Logo de la PERSONITA" class="logo-img-personita">
+            </div>
+            <div class="busqueda-bar">
+                <input type="text" placeholder="Buscar películas o series..." class="busqueda-class">
+            </div>
+        </div>
+    </nav>
+
+    <section class="banner">
+        <div class="carrusel">
+            <div class="carrusel-item active" style="background-image: url('ELPINGUINOBANNER.avif');">
+            </div>
+            <div class="carrusel-item" style="background-image: url('JURASSICWORLDBANNER.jpg');">
+            </div>
+            <div class="carrusel-item" style="background-image: url('TEDBANNER.webp');">
+            </div>
+            <div class="carrusel-item" style="background-image: url('RYM.webp');">
+            </div>
+        </div>
+    </section>
+
+    <section class="contenido-section">
+        <h2>Top 10 Películas</h2>
+        <div class="carrusel-container">
+            <button class="carrusel-prev" data-target="movies-row">&#10094;</button>
+            <div class="contenido-row" id="movies-row">
+                <div class="contenido-item">
+                    <img src="ERL.webp" alt="Película 1">
+                </div>
+                <div class="contenido-item">
+                    <img src="IJ.jpg" alt="Película 2">
+                </div>
+                <div class="contenido-item">
+                    <img src="B.webp" alt="Película 3">
+                </div>
+                <div class="contenido-item">
+                    <img src="MEGALODON.jpg" alt="Película 4">
+                </div>
+                <div class="contenido-item">
+                    <img src="TP.jpg" alt="Película 5">
+                </div>
+                <div class="contenido-item">
+                    <img src="MPA.jpg" alt="Película 6">
+                </div>
+                <div class="contenido-item">
+                    <img src="PVZ.jpg" alt="Película 7">
+                </div>
+                <div class="contenido-item">
+                    <img src="M.webp" alt="Película 8">
+                </div>
+                <div class="contenido-item">
+                    <img src="TS.jpg" alt="Película 9">
+                </div>
+                <div class="contenido-item">
+                    <img src="T.jpg" alt="Película 10">
+                </div>
+            </div>
+            <button class="carrusel-next" data-target="movies-row">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="contenido-section">
+        <h2>Top 10 Series</h2>
+        <div class="carrusel-container">
+            <button class="carrusel-prev" data-target="series-row">&#10094;</button>
+            <div class="contenido-row" id="series-row">
+                <div class="contenido-item">
+                    <img src="GOT.jpg" alt="Serie 1">
+                </div>
+                <div class="contenido-item">
+                    <img src="PLL.webp" alt="Serie 2">
+                </div>
+                <div class="contenido-item">
+                    <img src="TWD.jpg" alt="Serie 3">
+                </div>
+                <div class="contenido-item">
+                    <img src="E.jpg" alt="Serie 4">
+                </div>
+                <div class="contenido-item">
+                    <img src="BM.jpg" alt="Serie 5">
+                </div>
+                <div class="contenido-item">
+                    <img src="SD.jpg" alt="Serie 6">
+                </div>
+                <div class="contenido-item">
+                    <img src="TED.jpg" alt="Serie 7">
+                </div>
+                <div class="contenido-item">
+                    <img src="ST.jpg" alt="Serie 8">
+                </div>
+                <div class="contenido-item">
+                    <img src="TLOU.jpg" alt="Serie 9">
+                </div>
+                <div class="contenido-item">
+                    <img src="DAHMER.jpg" alt="Serie 10">
+                </div>
+            </div>
+            <button class="carrusel-next" data-target="series-row">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="contenido-section">
+        <h2>Catálogo Completo</h2>
+        <div class="catalogo-grid">
+            <div class="contenido-item">
+                <img src="B.webp" alt="Catálogo 1">
+            </div>
+            <div class="contenido-item">
+                <img src="TWD.jpg" alt="Catálogo 2">
+            </div>
+            <div class="contenido-item">
+                <img src="MEGALODON.jpg" alt="Catálogo 3">
+            </div>
+            <div class="contenido-item">
+                <img src="ERL.webp" alt="Catálogo 4">
+            </div>
+            <div class="contenido-item">
+                <img src="GOT.jpg" alt="Catálogo 5">
+            </div>
+            <div class="contenido-item">
+                <img src="IJ.jpg" alt="Catálogo 6">
+            </div>
+            <div class="contenido-item">
+                <img src="PLL.webp" alt="Catálogo 7">
+            </div>
+            <div class="contenido-item">
+                <img src="E.jpg" alt="Catálogo 8">
+            </div>
+            <div class="contenido-item">
+                <img src="DAHMER.jpg" alt="Catálogo 9">
+            </div>
+            <div class="contenido-item">
+                <img src="TS.jpg" alt="Catálogo 10">
+            </div>
+            <div class="contenido-item">
+                <img src="ST.jpg" alt="Catálogo 11">
+            </div>
+            <div class="contenido-item">
+                <img src="M.webp" alt="Catálogo 12">
+            </div>
+            <div class="contenido-item">
+                <img src="TLOU.jpg" alt="Catálogo 13">
+            </div>
+            <div class="contenido-item">
+                <img src="T.jpg" alt="Catálogo 14">
+            </div>
+            <div class="contenido-item">
+                <img src="TED.jpg" alt="Catálogo 15">
+            </div>
+            <div class="contenido-item">
+                <img src="MPA.jpg" alt="Catálogo 16">
+            </div>
+            <div class="contenido-item">
+                <img src="SD.jpg" alt="Catálogo 17">
+            </div>
+            <div class="contenido-item">
+                <img src="BM.jpg" alt="Catálogo 18">
+            </div>
+            <div class="contenido-item">
+                <img src="PVZ.jpg" alt="Catálogo 19">
+            </div>
+            <div class="contenido-item">
+                <img src="TP.jpg" alt="Catálogo 20">
+            </div>
+            <div class="contenido-item">
+                <img src="GMZ.jpg" alt="Catálogo 20">
+            </div>
+            <div class="contenido-item">
+                <img src="ELPINGUINO.webp" alt="Catálogo 20">
+            </div>
+            <div class="contenido-item">
+                <img src="JWPELI.jpg" alt="Catálogo 20">
+            </div>
+            <div class="contenido-item">
+                <img src="TEDPELI.jpg" alt="Catálogo 20">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carrusel-item');
+        const totalItems = items.length;
+
+        function showSlide(index) {
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                item.style.transform = `translateX(${(i - index) * 100}%)`;
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            showSlide(currentIndex); 
+        }
+
+        setInterval(nextSlide, 5000);
+
+        showSlide(currentIndex);
+
+
+
+
+
+        
+
+        document.querySelectorAll('.carrusel-prev').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const row = document.getElementById(targetId);
+                row.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+        });
+
+        document.querySelectorAll('.carrusel-next').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+                const row = document.getElementById(targetId);
+                row.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+        });
+
+
+
+
+
+
+
+
+        const hamburguesa = document.getElementById('hamburguesa');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburguesa.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburguesa.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
