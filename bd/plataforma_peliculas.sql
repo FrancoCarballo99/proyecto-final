@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2025 a las 19:04:51
+-- Tiempo de generación: 22-10-2025 a las 23:31:09
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `plataforma_streaming`
+-- Base de datos: `plataforma_peliculas`
 --
 
 -- --------------------------------------------------------
@@ -29,35 +29,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `tmdb_genre_id` int(11) DEFAULT NULL
+  `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `contenidos`
+-- Estructura de tabla para la tabla `contenido`
 --
 
-CREATE TABLE `contenidos` (
+CREATE TABLE `contenido` (
   `id_contenido` int(11) NOT NULL,
-  `tmdb_id` int(11) DEFAULT NULL,
   `titulo` varchar(255) NOT NULL,
-  `imagen` varchar(255) DEFAULT NULL,
+  `descripcion` text DEFAULT NULL,
   `tipo` enum('pelicula','serie') NOT NULL,
-  `top10` tinyint(1) DEFAULT 0,
-  `banner` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `contenido_categoria`
---
-
-CREATE TABLE `contenido_categoria` (
-  `id_contenido` int(11) NOT NULL,
-  `id_categoria` int(11) NOT NULL
+  `categoria_id` int(11) DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `nsfw` tinyint(1) DEFAULT 0,
+  `top10` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -67,10 +56,9 @@ CREATE TABLE `contenido_categoria` (
 --
 
 CREATE TABLE `mi_lista` (
-  `id_lista` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `id_perfil` int(11) NOT NULL,
-  `id_contenido` int(11) NOT NULL,
-  `fecha_agregado` datetime DEFAULT current_timestamp()
+  `id_contenido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -112,7 +100,9 @@ CREATE TABLE `usuarios` (
 CREATE TABLE `videos` (
   `id_video` int(11) NOT NULL,
   `id_contenido` int(11) NOT NULL,
-  `url_video` varchar(255) NOT NULL
+  `url_video` varchar(255) NOT NULL,
+  `temporada` int(11) DEFAULT NULL,
+  `episodio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -126,25 +116,18 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id_categoria`);
 
 --
--- Indices de la tabla `contenidos`
+-- Indices de la tabla `contenido`
 --
-ALTER TABLE `contenidos`
+ALTER TABLE `contenido`
   ADD PRIMARY KEY (`id_contenido`),
-  ADD UNIQUE KEY `tmdb_id` (`tmdb_id`,`tipo`);
-
---
--- Indices de la tabla `contenido_categoria`
---
-ALTER TABLE `contenido_categoria`
-  ADD PRIMARY KEY (`id_contenido`,`id_categoria`),
-  ADD KEY `id_categoria` (`id_categoria`);
+  ADD KEY `categoria_id` (`categoria_id`);
 
 --
 -- Indices de la tabla `mi_lista`
 --
 ALTER TABLE `mi_lista`
-  ADD PRIMARY KEY (`id_lista`),
-  ADD UNIQUE KEY `id_perfil` (`id_perfil`,`id_contenido`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_perfil` (`id_perfil`),
   ADD KEY `id_contenido` (`id_contenido`);
 
 --
@@ -179,16 +162,16 @@ ALTER TABLE `categorias`
   MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `contenidos`
+-- AUTO_INCREMENT de la tabla `contenido`
 --
-ALTER TABLE `contenidos`
+ALTER TABLE `contenido`
   MODIFY `id_contenido` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `mi_lista`
 --
 ALTER TABLE `mi_lista`
-  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `perfiles`
@@ -213,18 +196,17 @@ ALTER TABLE `videos`
 --
 
 --
--- Filtros para la tabla `contenido_categoria`
+-- Filtros para la tabla `contenido`
 --
-ALTER TABLE `contenido_categoria`
-  ADD CONSTRAINT `contenido_categoria_ibfk_1` FOREIGN KEY (`id_contenido`) REFERENCES `contenidos` (`id_contenido`),
-  ADD CONSTRAINT `contenido_categoria_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`);
+ALTER TABLE `contenido`
+  ADD CONSTRAINT `contenido_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id_categoria`);
 
 --
 -- Filtros para la tabla `mi_lista`
 --
 ALTER TABLE `mi_lista`
   ADD CONSTRAINT `mi_lista_ibfk_1` FOREIGN KEY (`id_perfil`) REFERENCES `perfiles` (`id_perfil`),
-  ADD CONSTRAINT `mi_lista_ibfk_2` FOREIGN KEY (`id_contenido`) REFERENCES `contenidos` (`id_contenido`);
+  ADD CONSTRAINT `mi_lista_ibfk_2` FOREIGN KEY (`id_contenido`) REFERENCES `contenido` (`id_contenido`);
 
 --
 -- Filtros para la tabla `perfiles`
@@ -236,7 +218,7 @@ ALTER TABLE `perfiles`
 -- Filtros para la tabla `videos`
 --
 ALTER TABLE `videos`
-  ADD CONSTRAINT `videos_ibfk_1` FOREIGN KEY (`id_contenido`) REFERENCES `contenidos` (`id_contenido`);
+  ADD CONSTRAINT `videos_ibfk_1` FOREIGN KEY (`id_contenido`) REFERENCES `contenido` (`id_contenido`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
