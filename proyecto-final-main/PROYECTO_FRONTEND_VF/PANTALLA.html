@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANTALLA</title>
+    <link rel="stylesheet" href="stylesPANTALLA.css">
+    <link rel="icon" href="CALAMAR.png" type="image/png">
+</head>
+<body>
+    <div class="logo-container">
+        <img id="logoCALAMAR" src="CALAMAR.png" class="iconos" alt="Logo">
+    </div>
+
+    <div class="general-container">
+        <div class="logo-usuario-contraseña">
+            <img id="logoPERSONITA" src="PERSONITA.png" class="etiqueta iconos" alt="Logo">
+            <input type="text" placeholder="correo" id="correo">
+        </div>
+
+        <div class="logo-usuario-contraseña">
+            <img id="logoCONTRASEÑA" src="img/CONTRASEÑA.png" class="etiqueta iconos" alt="Logo">
+            <input type="password" name="" id="password" placeholder="contraseña" >        
+        </div>
+
+        <div class="botones">
+            <button class="logoISR" id="inicio">Iniciar Sesión</button>
+            <button class="logoISR">Registrar</button>
+        </div>
+    </div>
+    <script>
+    document.getElementById('inicio').addEventListener('click', function() {
+    const correo = document.getElementById('correo').value;
+    const password = document.getElementById('password').value;
+
+    fetch('conexion_login.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `correo=${encodeURIComponent(correo)}&password=${encodeURIComponent(password)}`
+    })
+    .then(res => res.text())
+    .then(data => {
+        // if (data) {
+        //     window.location.href = 'PROYECTITO.html';
+        // } else {
+        //     alert('Correo o contraseña incorrectos');
+        // }
+        console.log(JSON.stringify(data));
+    });
+});
+</script>
+</body>
+</html>
