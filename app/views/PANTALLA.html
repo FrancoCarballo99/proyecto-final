@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PANTALLA</title>
+    <link rel="stylesheet" href="/public/css/stylesPANTALLA.css" />
+    <link rel="icon" href="/public/img/CALAMAR.png" type="image/png" />
+  </head>
+  <body>
+    <div class="logo-container">
+      <img
+        id="logoCALAMAR"
+        src="/public/img/CALAMAR.png"
+        class="iconos"
+        alt="Logo"
+      />
+    </div>
+
+    <div class="general-container">
+      <div class="logo-usuario-contraseña">
+        <img
+          id="logoPERSONITA"
+          src="/public/img/PERSONITA.png"
+          class="etiqueta iconos"
+          alt="Logo"
+        />
+        <input type="text" placeholder="correo" id="correo" />
+      </div>
+
+      <div class="logo-usuario-contraseña">
+        <img
+          id="logoCONTRASEÑA"
+          src="/public/img/CONTRASEÑA.png"
+          class="etiqueta iconos"
+          alt="Logo"
+        />
+        <input type="password" name="" id="password" placeholder="contraseña" />
+      </div>
+
+      <div class="botones">
+        <button class="logoISR" id="inicio">Iniciar Sesión</button>
+        <button class="logoISR">Registrar</button>
+      </div>
+    </div>
+    <script>
+      document.getElementById("inicio").addEventListener("click", function () {
+        const correo = document.getElementById("correo").value;
+        const password = document.getElementById("password").value;
+
+        fetch("/router/conexion_login.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `correo=${encodeURIComponent(
+            correo
+          )}&password=${encodeURIComponent(password)}`,
+        })
+          .then((res) => res.text())
+          .then((data) => {
+            console.log(JSON.stringify(data));
+          });
+      });
+    </script>
+  </body>
+</html>
