@@ -11,7 +11,7 @@ Proyecto final "Plataforma de series y películas"
 + Top 10.
 + "Mi lista".
 + Administrador y usuarios.
-+ Usuario específico para niños/as.
++ Usuario específico para niños.
 + Barra de búsqueda.
 + Base de datos.
 
