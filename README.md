@@ -24,3 +24,6 @@ Proyecto final "Plataforma de series y películas"
 
 - Pantalla:
 + Registro / Inicio de sesión.
+
+- Panel del administrador:
++ Contiene una pantalla específica para agregar, modificar y eliminar contenido.
